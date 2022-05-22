@@ -51,20 +51,20 @@ gbm = lgb.train(
 
 print('Plotting metrics recorded during training...')
 ax = lgb.plot_metric(evals_result, metric='l1')
-plt.show()
+plt.savefig('l1_metrics.png')
 
 print('Plotting feature importances...')
 ax = lgb.plot_importance(gbm, max_num_features=10)
-plt.show()
+plt.savefig('feature_imp.png')
 
 print('Plotting split value histogram...')
 ax = lgb.plot_split_value_histogram(gbm, feature='f26', bins='auto')
-plt.show()
+plt.savefig('splitvalue.png')
 
 print('Plotting 54th tree...')  # one tree use categorical feature to split
 ax = lgb.plot_tree(gbm, tree_index=53, figsize=(15, 15), show_info=['split_gain'])
-plt.show()
+plt.savefig('54th_tree.png')
 
-print('Plotting 54th tree with graphviz...')
-graph = lgb.create_tree_digraph(gbm, tree_index=53, name='Tree54')
-graph.render(view=True)
+# print('Plotting 54th tree with graphviz...')
+# graph = lgb.create_tree_digraph(gbm, tree_index=53, name='Tree54')
+# graph.render(view=True)
